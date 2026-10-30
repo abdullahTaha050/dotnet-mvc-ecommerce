@@ -25,12 +25,17 @@ public class DataContext : DbContext
     modelBuilder.Entity<Product>().HasData(
       new List<Product>()
       {
-        new Product() {Id= 1, IsActive= true, Name = "Samsung s10", Price = 20000},
-        new Product() {Id= 2, IsActive= true, Name = "Samsung s14", Price = 30000},
-        new Product() {Id= 3, IsActive= false, Name = "Samsung s32", Price = 60000}
+        new Product() {Id= 1, IsActive= true, Name = "Samsung s10", Price = 20000, Image = "1.jpeg", IsHomePage = true, 
+        Description = "Lorem ipsum, dolor sit amet consectetur qor voluptatem explnissimos! Deleniti."},
+        new Product() {Id= 2, IsActive= true, Name = "Samsung s14", Price = 30000, Image = "2.jpeg", IsHomePage = false, 
+        Description = "Lorem ipsum, dolor sit amet consectetur qor voluptatem explnissimos! Deleniti."},
+        new Product() {Id= 3, IsActive= false, Name = "Samsung s32", Price = 60000, Image = "3.jpeg", IsHomePage = true, 
+        Description = "Lorem ipsum, dolor sit amet consectetur qor voluptatem explnissimos! Deleniti."}
       }
     );
   }
+
+
 
 
   public DbSet<Product> Products { get; set; }

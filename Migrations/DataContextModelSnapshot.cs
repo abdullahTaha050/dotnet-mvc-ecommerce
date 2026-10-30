@@ -22,7 +22,16 @@ namespace ecommerce_mvc_tutorial.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsHomePage")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -40,21 +49,30 @@ namespace ecommerce_mvc_tutorial.Migrations
                         new
                         {
                             Id = 1,
+                            Description = "Lorem ipsum, dolor sit amet consectetur qor voluptatem explnissimos! Deleniti.",
+                            Image = "1.jpeg",
                             IsActive = true,
+                            IsHomePage = true,
                             Name = "Samsung s10",
                             Price = 20000f
                         },
                         new
                         {
                             Id = 2,
+                            Description = "Lorem ipsum, dolor sit amet consectetur qor voluptatem explnissimos! Deleniti.",
+                            Image = "2.jpeg",
                             IsActive = true,
+                            IsHomePage = false,
                             Name = "Samsung s14",
                             Price = 30000f
                         },
                         new
                         {
                             Id = 3,
+                            Description = "Lorem ipsum, dolor sit amet consectetur qor voluptatem explnissimos! Deleniti.",
+                            Image = "3.jpeg",
                             IsActive = false,
+                            IsHomePage = true,
                             Name = "Samsung s32",
                             Price = 60000f
                         });
