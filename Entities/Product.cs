@@ -9,4 +9,8 @@ public class Product
     public string? Description { get; set; }
     public bool IsHomePage { get; set; }
     public bool IsActive { get; set; }
+
+    // kategori tablosu ile bir bağımız olduğunu Ef'ye göstermiş olduk.
+    public int CategoryId { get; set; }
+    public Category Category { get; set; } = null!;
 }

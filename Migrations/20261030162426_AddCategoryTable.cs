@@ -1,0 +1,102 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
+namespace ecommerce_mvc_tutorial.Migrations
+{
+    /// <inheritdoc />
+    public partial class AddCategoryTable : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AddColumn<int>(
+                name: "CategoryId",
+                table: "Products",
+                type: "INTEGER",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.CreateTable(
+                name: "Category",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Url = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Category", x => x.Id);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "Name", "Url" },
+                values: new object[,]
+                {
+                    { 1, "Telefon", "telefon" },
+                    { 2, "Beyaz Eşya", "beyaz-esya" },
+                    { 3, "Giyim", "giyim" },
+                    { 4, "Kozmetik", "kozmetik" },
+                    { 5, "Elektronik", "elektronik" }
+                });
+
+            migrationBuilder.UpdateData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "CategoryId",
+                value: 1);
+
+            migrationBuilder.UpdateData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "CategoryId",
+                value: 2);
+
+            migrationBuilder.UpdateData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "CategoryId",
+                value: 1);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_CategoryId",
+                table: "Products",
+                column: "CategoryId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Products_Category_CategoryId",
+                table: "Products",
+                column: "CategoryId",
+                principalTable: "Category",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Products_Category_CategoryId",
+                table: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Category");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Products_CategoryId",
+                table: "Products");
+
+            migrationBuilder.DropColumn(
+                name: "CategoryId",
+                table: "Products");
+        }
+    }
+}

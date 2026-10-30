@@ -16,10 +16,64 @@ namespace ecommerce_mvc_tutorial.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.14");
 
+            modelBuilder.Entity("ecommerce_mvc_tutorial.Entities.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Telefon",
+                            Url = "telefon"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Beyaz Eşya",
+                            Url = "beyaz-esya"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Giyim",
+                            Url = "giyim"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Kozmetik",
+                            Url = "kozmetik"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Elektronik",
+                            Url = "elektronik"
+                        });
+                });
+
             modelBuilder.Entity("ecommerce_mvc_tutorial.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -43,12 +97,15 @@ namespace ecommerce_mvc_tutorial.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            CategoryId = 1,
                             Description = "Lorem ipsum, dolor sit amet consectetur qor voluptatem explnissimos! Deleniti.",
                             Image = "1.jpeg",
                             IsActive = true,
@@ -59,6 +116,7 @@ namespace ecommerce_mvc_tutorial.Migrations
                         new
                         {
                             Id = 2,
+                            CategoryId = 2,
                             Description = "Lorem ipsum, dolor sit amet consectetur qor voluptatem explnissimos! Deleniti.",
                             Image = "2.jpeg",
                             IsActive = true,
@@ -69,6 +127,7 @@ namespace ecommerce_mvc_tutorial.Migrations
                         new
                         {
                             Id = 3,
+                            CategoryId = 1,
                             Description = "Lorem ipsum, dolor sit amet consectetur qor voluptatem explnissimos! Deleniti.",
                             Image = "3.jpeg",
                             IsActive = false,
@@ -76,6 +135,22 @@ namespace ecommerce_mvc_tutorial.Migrations
                             Name = "Samsung s32",
                             Price = 60000f
                         });
+                });
+
+            modelBuilder.Entity("ecommerce_mvc_tutorial.Entities.Product", b =>
+                {
+                    b.HasOne("ecommerce_mvc_tutorial.Entities.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("ecommerce_mvc_tutorial.Entities.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
