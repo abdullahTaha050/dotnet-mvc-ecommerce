@@ -2,6 +2,8 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ecommerce_mvc_tutorial.Migrations
 {
     /// <inheritdoc />
@@ -23,6 +25,16 @@ namespace ecommerce_mvc_tutorial.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "IsActive", "Name", "Price" },
+                values: new object[,]
+                {
+                    { 1, true, "Samsung s10", 20000f },
+                    { 2, true, "Samsung s14", 30000f },
+                    { 3, false, "Samsung s32", 60000f }
                 });
         }
 

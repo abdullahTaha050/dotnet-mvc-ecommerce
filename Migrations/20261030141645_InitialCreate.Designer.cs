@@ -10,7 +10,7 @@ using ecommerce_mvc_tutorial.Context;
 namespace ecommerce_mvc_tutorial.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20261030135933_InitialCreate")]
+    [Migration("20261030141645_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -38,6 +38,29 @@ namespace ecommerce_mvc_tutorial.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsActive = true,
+                            Name = "Samsung s10",
+                            Price = 20000f
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsActive = true,
+                            Name = "Samsung s14",
+                            Price = 30000f
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsActive = false,
+                            Name = "Samsung s32",
+                            Price = 60000f
+                        });
                 });
 #pragma warning restore 612, 618
         }
