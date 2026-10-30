@@ -20,7 +20,7 @@ public class ProductController : Controller
 
     public IActionResult List()
     {
-        var products = _context.Products.ToList();
+        var products = _context.Products.Where(p => p.IsActive).ToList();
         return View(products);
     }
 }
