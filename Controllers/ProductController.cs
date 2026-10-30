@@ -23,4 +23,14 @@ public class ProductController : Controller
         var products = _context.Products.Where(p => p.IsActive).ToList();
         return View(products);
     }
+
+    public IActionResult Details(int id)
+    {
+        //burada birden fazla yöntem gösterilmiştir. iki yol da doğrudur.
+        
+        // var product = _context.Products.FirstOrDefault(p => p.Id == id);
+        var product = _context.Products.Find(id);
+
+        return View(product);
+    }
 }
