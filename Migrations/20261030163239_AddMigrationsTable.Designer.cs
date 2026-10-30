@@ -10,8 +10,8 @@ using ecommerce_mvc_tutorial.Context;
 namespace ecommerce_mvc_tutorial.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20261030162426_AddCategoryTable")]
-    partial class AddCategoryTable
+    [Migration("20261030163239_AddMigrationsTable")]
+    partial class AddMigrationsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,7 @@ namespace ecommerce_mvc_tutorial.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new

@@ -50,4 +50,9 @@ public class DataContext : DbContext
 
 
   public DbSet<Product> Products { get; set; }
+  //buraya kategori eklemeden de az önce db tarafına kategori tablosunu oluşturdu
+  // çünkü product tablosunun içerisine dahil ettik. oluşturmayı yapar ancak kategori i
+  // ile ayrıca çalışacaksak burada kategoriyi tanımlamak gerekli. örneğin crud yapmak için.
+  // buradaki prop isimleri db tablosundaki isim ile eşleşmek zorundadır.
+  public DbSet<Category> Categories { get; set; }
 }
