@@ -1,7 +1,21 @@
+using ecommerce_mvc_tutorial.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+/*
+- bu satır oluşturduğumuz EF context'ini uygulamaya tanıtır.
+- appsettings dosyasından connection string bölümü otomatik olarak alınır.
+- dbContext'in sqLite kullanması ayarı yapılır. SQLite da kurulan EF paketinin SQLite olması sebebiyle elimizde bulunmaktadır.
+*/
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+    options.UseSqlite(connString);
+});
 
 var app = builder.Build();
 
