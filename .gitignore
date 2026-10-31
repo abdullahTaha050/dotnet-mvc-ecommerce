@@ -75,3 +75,5 @@ coverage*.info
 # Frontend Dependencies (if used)
 # =====================================
 node_modules/
+
+.fake
