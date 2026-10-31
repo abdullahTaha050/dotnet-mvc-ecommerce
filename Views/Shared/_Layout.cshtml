@@ -16,7 +16,7 @@
         @* @await Html.PartialAsync("~/Views/Shared/Partials/_Topbar.cshtml") *@
         
         @await Html.PartialAsync("Partials/_Topbar")
-        @await Html.PartialAsync("Partials/_Navbar")
+        @await Component.InvokeAsync("Navbar")
     </header>
 
     <main>
